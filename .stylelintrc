@@ -8,7 +8,6 @@
   ],
   "rules": {
     "indentation": "tab",
-    "color-hex-case": "upper",
     "string-quotes": "single"
   }
 }
