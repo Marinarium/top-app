@@ -1,10 +1,15 @@
 import React from "react";
-import {Button, Htag, Paragraph} from "../components/";
+
+import {Button, Htag, Paragraph, Tag} from "../components/";
 
 export default function Home(): JSX.Element {
     return (
         <div>
             <Htag tag='h1'>Hello</Htag>
+            <Tag color='red'>Hey</Tag>
+            <Tag color='grey'>Hi</Tag>
+            <Tag color='green'>Good Morning!</Tag>
+            <Tag color='primary' size='medium'>Good Evening!</Tag>
             <Paragraph appearance='big'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem doloremque doloribus
                 eius excepturi exercitationem hic impedit ipsa laborum magni nemo nulla obcaecati, provident quia totam.
                 Dignissimos possimus sapiente temporibus?</Paragraph>
