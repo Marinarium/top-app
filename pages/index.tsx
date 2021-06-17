@@ -1,9 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {Button, Htag, Paragraph, Tag} from "../components/";
 
 export default function Home(): JSX.Element {
     const [counter, setCounter] = useState<number>(0);
+
+    useEffect(() => {
+        console.log('Counter of the first mounting: ' + counter);
+        return function cleanup() {
+            console.log('Unmount'); // we can't see, we should unmount Home to see it?
+        };
+    }, []); // One time
+
+    useEffect(() => {
+        console.log('Counter per every render: ' + counter);
+        return function cleanup() {
+            console.log('Unmount');
+        };
+    });
+
     return (
         <div>
             <Htag tag='h1'>Hello {counter}</Htag>
