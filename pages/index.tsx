@@ -1,25 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {Button, Htag, Paragraph, Tag} from "../components/";
 
 export default function Home(): JSX.Element {
+    const [counter, setCounter] = useState<number>(0);
     return (
         <div>
-            <Htag tag='h1'>Hello</Htag>
+            <Htag tag='h1'>Hello {counter}</Htag>
             <Tag color='red'>Hey</Tag>
             <Tag color='grey'>Hi</Tag>
             <Tag color='green'>Good Morning!</Tag>
             <Tag color='primary' size='medium'>Good Evening!</Tag>
             <Paragraph appearance='big'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem doloremque doloribus
-                eius excepturi exercitationem hic impedit ipsa laborum magni nemo nulla obcaecati, provident quia totam.
+                eius excepturi exercitationem hic impedit.</Paragraph>
+            <Paragraph>
                 Dignissimos possimus sapiente temporibus?</Paragraph>
-            <Paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem doloremque doloribus
-                eius excepturi exercitationem hic impedit ipsa laborum magni nemo nulla obcaecati, provident quia totam.
-                Dignissimos possimus sapiente temporibus?</Paragraph>
-            <Paragraph appearance='small'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem doloremque doloribus
-                eius excepturi exercitationem hic impedit ipsa laborum magni nemo nulla obcaecati, provident quia totam.
-                Dignissimos possimus sapiente temporibus?</Paragraph>
-            <Button appearance='primary' arrow='right'>Button</Button>
+            <Paragraph appearance='small'>Aliquid dolorem doloremque doloribus
+                eius excepturi exercitationem hic?</Paragraph>
+            <Button appearance='primary' arrow='right' onClick={() => setCounter(x => x + 1)}>+1</Button>
             <Button appearance='primary'>Button</Button>
             <Button appearance='ghost'>Button</Button>
             <Button appearance='ghost' arrow='right'>Button</Button>
