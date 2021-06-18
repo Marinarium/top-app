@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import {Button, Htag, Paragraph, Tag} from "../components/";
+import {Button, Htag, Paragraph, Rating, Tag} from "../components/";
 
 export default function Home(): JSX.Element {
     const [counter, setCounter] = useState<number>(0);
@@ -22,6 +22,7 @@ export default function Home(): JSX.Element {
     return (
         <div>
             <Htag tag='h1'>Hello {counter}</Htag>
+            <Rating rating={4} />
             <Tag color='red'>Hey</Tag>
             <Tag color='grey'>Hi</Tag>
             <Tag color='green'>Good Morning!</Tag>
