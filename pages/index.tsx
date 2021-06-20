@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {Button, Htag, Paragraph, Rating, Tag} from "../components/";
 
 export default function Home(): JSX.Element {
+    const [rating, setRating] = useState<number>(4);
     const [counter, setCounter] = useState<number>(0);
 
     useEffect(() => {
@@ -22,7 +23,8 @@ export default function Home(): JSX.Element {
     return (
         <div>
             <Htag tag='h1'>Hello {counter}</Htag>
-            <Rating rating={4} />
+            {/*<Rating rating={rating} />*/}
+            <Rating rating={rating} isEditable={true} setRating={setRating}/>
             <Tag color='red'>Hey</Tag>
             <Tag color='grey'>Hi</Tag>
             <Tag color='green'>Good Morning!</Tag>
