@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {GetStaticProps} from "next";
+import axios from 'axios';
 
 import {Button, Htag, Paragraph, Rating, Tag} from "../components/";
-import {Layout, withLayout} from "../layout/Layout";
+import {withLayout} from "../layout/Layout";
+import {MenuItem} from "../interfaces/menu.interface";
 
-function Home(): JSX.Element {
+function Home({menu}: HomeProps): JSX.Element {
     const [rating, setRating] = useState<number>(4);
     const [counter, setCounter] = useState<number>(0);
 
@@ -30,7 +33,8 @@ function Home(): JSX.Element {
             <Tag color='grey'>Hi</Tag>
             <Tag color='green'>Good Morning!</Tag>
             <Tag color='primary' size='medium'>Good Evening!</Tag>
-            <Paragraph appearance='big'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem doloremque doloribus
+            <Paragraph appearance='big'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolorem
+                doloremque doloribus
                 eius excepturi exercitationem hic impedit.</Paragraph>
             <Paragraph>
                 Dignissimos possimus sapiente temporibus?</Paragraph>
@@ -40,9 +44,27 @@ function Home(): JSX.Element {
             <Button appearance='primary'>Button</Button>
             <Button appearance='ghost'>Button</Button>
             <Button appearance='ghost' arrow='right'>Button</Button>
+            {menu.map(item => (<li key={item._id.secondCategory}>{item._id.secondCategory}</li>))}
         </>
     );
 }
 
 export default withLayout(Home);
 
+export const getStaticProps: GetStaticProps = async () => {
+    const firstCategory = 0;
+    const {data: menu} =await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+        firstCategory
+    });
+    return {
+        props: {
+            menu,
+            firstCategory
+        }
+    }
+}
+
+interface HomeProps extends Record<string, unknown>{
+    menu: MenuItem[];
+    firstCategory: number;
+}
