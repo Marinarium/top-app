@@ -44,7 +44,6 @@ function Home({menu}: HomeProps): JSX.Element {
             <Button appearance='primary'>Button</Button>
             <Button appearance='ghost'>Button</Button>
             <Button appearance='ghost' arrow='right'>Button</Button>
-            {menu.map(item => (<li key={item._id.secondCategory}>{item._id.secondCategory}</li>))}
         </>
     );
 }

@@ -1,7 +1,8 @@
-
-import {withLayout} from "../../layout/Layout";
+import React from "react";
 import axios from "axios";
 import {GetStaticPaths, GetStaticProps, GetStaticPropsContext} from "next";
+
+import {withLayout} from "../../layout/Layout";
 import {MenuItem} from "../../interfaces/menu.interface";
 import {TopPageModel} from "../../interfaces/page.interface";
 import {ProductModel} from "../../interfaces/product.interface";
@@ -41,8 +42,8 @@ export const getStaticProps:GetStaticProps<CourseProps> = async ({params}: GetSt
     const {data:menu} = await axios.post<MenuItem[]>(domain + '/api/top-page/find', {
         firstCategory
     });
-    const {data:page} = await axios.get<TopPageModel>(domain+ '/api/top-page/byAlias/' + params.alias);
-    const {data:products} = await axios.post<ProductModel[]>(domain+ '/api/product/find', {
+    const {data:page} = await axios.get<TopPageModel>(domain + '/api/top-page/byAlias/' + params.alias);
+    const {data:products} = await axios.post<ProductModel[]>(domain + '/api/product/find', {
         category: page.category,
         limit: 10
     });
